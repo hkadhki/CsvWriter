@@ -5,14 +5,13 @@ import org.writer.model.Months;
 import org.writer.model.Person;
 import org.writer.model.Student;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 

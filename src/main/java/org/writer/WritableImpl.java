@@ -25,7 +25,7 @@ public class WritableImpl implements Writable {
      * @throws RuntimeException Возникает если ошибка доступа к полям объекта или ошибка записи в файл.
      */
     public void writeToFile(List<?> data, String fileName) {
-        if (data == null || data.isEmpty()) {
+        if (data == null || data.isEmpty() || fileName == null || fileName.isEmpty()) {
             return;
         }
 
@@ -50,8 +50,9 @@ public class WritableImpl implements Writable {
                 try {
                     Object value = field.get(x);
                     String strValue;
-
-                    if(value instanceof Collection || value instanceof Map) {
+                    if (value == null) {
+                        strValue = "";
+                    }else if(value instanceof Collection || value instanceof Map) {
                         strValue ="\"" + value + "\"";
                     }else if(value.getClass().isArray()){
                         strValue ="\"" + Arrays.toString((Object[]) value) + "\"";
