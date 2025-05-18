@@ -3,6 +3,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id "org.sonarqube" version "6.0.1.5171"
 }
 
 repositories {
@@ -37,4 +38,15 @@ publishing {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.projectKey", "sdasdsadas"
+        property "sonar.projectName", "sadsa"
+        property "sonar.java.binaries", "build/classes/java/main"
+        property "sonar.sources", "src/main/java"
+        property "sonar.tests", "src/test/java"
+    }
 }

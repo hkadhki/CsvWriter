@@ -3,14 +3,13 @@ package org.writer;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 /**
  * Реализация интерфейса Writable, предоставляющая функциональность для записи данных в CSV-файл.
@@ -25,7 +24,7 @@ public class WritableImpl implements Writable {
      * @throws RuntimeException Возникает если ошибка доступа к полям объекта или ошибка записи в файл.
      */
     public void writeToFile(List<?> data, String fileName) {
-        if (data == null || data.isEmpty() || fileName == null || fileName.isEmpty()) {
+        if (validData(data, fileName)) {
             return;
         }
 
@@ -78,6 +77,10 @@ public class WritableImpl implements Writable {
         } catch (IOException ex) {
             throw new RuntimeException("Ошибка записи в файл", ex);
         }
+    }
+
+    private boolean validData(List<?> data, String fileName){
+        return data == null || data.isEmpty() || fileName == null || fileName.isEmpty();
     }
 
 }

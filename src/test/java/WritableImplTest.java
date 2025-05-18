@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.writer.WritableImpl;
 import org.writer.model.Months;
+
 import org.writer.model.Person;
 import org.writer.model.Student;
 
@@ -46,7 +47,7 @@ class WritableImplTest {
     }
 
     @Test
-    void testWriteToFileWithEmptyList() throws IOException {
+    void testWriteToFileWithEmptyList() {
         List<Person> data = Collections.emptyList();
         String fileName = "empty";
         WritableImpl writable = new WritableImpl();
@@ -58,7 +59,7 @@ class WritableImplTest {
     }
 
     @Test
-    void testWriteToFileWithNullData() throws IOException {
+    void testWriteToFileWithNullData() {
         List<Person> data = null;
         String fileName = "null";
         WritableImpl writable = new WritableImpl();
